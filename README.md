@@ -1,28 +1,68 @@
-# PAR-King (versión de consola)
+<div align="center">
 
-Puzle de aparcamiento al estilo *Rush Hour* en Python: mueve los coches por el tablero hasta llevar un coche a la casilla de salida.
+# PAR-King
 
-> Trabajo de la asignatura **Paradigmas de Programación** · Grado en Ingeniería Informática · Universidad de Valladolid · Curso 2021-2022
+**Puzle de aparcamiento al estilo *Rush Hour* para terminal, en Python y sin dependencias externas**
 
-## Qué hace
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 
-- Carga los niveles desde `niveles.txt` y dibuja el tablero en la terminal con caracteres Unicode de recuadro.
-- Cada coche se identifica con una letra: la **mayúscula** lo mueve hacia la izquierda o hacia arriba, y la **minúscula** hacia la derecha o hacia abajo.
-- Acepta varias jugadas seguidas en una sola línea (por ejemplo `aBc`) y solo ejecuta las que no chocan con otro coche o con el borde.
-- Cuenta los movimientos válidos y da el nivel por completado cuando un coche ocupa la casilla de salida.
-- Guarda el récord de cada nivel en `records.txt` y solo permite jugar hasta el primer nivel sin récord.
-- Al completar un nivel, pregunta si se quiere pasar al siguiente (`S`/`N`).
+<sub>Paradigmas de Programación · Grado en Ingeniería Informática · Universidad de Valladolid · Curso 2021-2022</sub>
 
-## Tecnologías
+</div>
 
-- Python 3 (solo biblioteca estándar).
+Nivel 1 tal y como lo dibuja el programa. Cada coche es una letra; el hueco del borde inferior es la salida.
 
-## Aspectos técnicos destacados
+```text
+Elige un nivel (1-2): NIVEL 1 - RECORD 46 movimientos
 
-- **Tablero como matriz de caracteres**: cada casilla del tablero (6x6 más el borde) ocupa un bloque de 3 filas por 5 columnas en una matriz de 24x40, lo que permite dibujar los coches con esquinas y líneas (`┌ ─ ┐ │ └ ┘`).
-- **Formato de nivel propio**: cada coche se describe con un código de cuatro caracteres, orientación (`H`/`V`), columna, fila y longitud (por ejemplo `V322`), y cada nivel indica las coordenadas de su salida.
-- **Detección de colisiones sobre la propia representación**: antes de mover un coche se comprueba que la casilla destino de la matriz contiene un espacio en blanco.
-- **Persistencia en ficheros de texto** para niveles y récords.
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+▒▒▒▒▒┌───┐          ┌───┐          ▒▒▒▒▒
+▒▒▒▒▒│ B │          │ D │          ▒▒▒▒▒
+▒▒▒▒▒│   │          │   │          ▒▒▒▒▒
+▒▒▒▒▒│   │     ┌───┐│   │          ▒▒▒▒▒
+▒▒▒▒▒│   │     │ A ││   │          ▒▒▒▒▒
+▒▒▒▒▒│   │     │   ││   │          ▒▒▒▒▒
+▒▒▒▒▒│   │     │   ││   │┌────────┐▒▒▒▒▒
+▒▒▒▒▒│ b │     │ a ││ d ││F      f│▒▒▒▒▒
+▒▒▒▒▒└───┘     └───┘└───┘└────────┘▒▒▒▒▒
+▒▒▒▒▒               ┌────────┐     ▒▒▒▒▒
+▒▒▒▒▒               │E      e│     ▒▒▒▒▒
+▒▒▒▒▒               └────────┘     ▒▒▒▒▒
+▒▒▒▒▒┌─────────────┐     ┌───┐┌───┐▒▒▒▒▒
+▒▒▒▒▒│C           c│     │ G ││ H │▒▒▒▒▒
+▒▒▒▒▒└─────────────┘     │   ││   │▒▒▒▒▒
+▒▒▒▒▒                    │   ││   │▒▒▒▒▒
+▒▒▒▒▒                    │ g ││ h │▒▒▒▒▒
+▒▒▒▒▒                    └───┘└───┘▒▒▒▒▒
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒     ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒     ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒     ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+Movimientos =
+```
+
+## En pocas palabras
+
+- **Reto**: representar un tablero de coches que se deslizan, validar cada movimiento y detectar cuándo se resuelve el nivel, todo en texto.
+- **Solución**: un juego de terminal que carga niveles desde fichero, dibuja los coches con caracteres de recuadro, ejecuta secuencias de jugadas y guarda el récord de cada nivel.
+- **Demuestra**: modelado de estado con matrices, formato de datos propio, detección de colisiones, persistencia en ficheros y diseño de la interacción por teclado.
+
+## Lo más destacado
+
+- **Formato de nivel propio**: cada coche cabe en cuatro caracteres (orientación `H`/`V`, columna, fila y longitud, por ejemplo `V322`) y cada nivel indica las coordenadas de su salida.
+- **Render a escala**: cada casilla del tablero de 6x6 más el borde ocupa un bloque de 3 filas por 5 columnas en una matriz de 24x40, lo que permite dibujar cada coche como una caja con esquinas.
+- **Colisiones sobre la propia representación**: antes de mover un coche se comprueba que la casilla destino de la matriz está vacía; un choque con otro coche o con el borde descarta la jugada.
+- **Controles compactos**: la mayúscula mueve el coche a la izquierda o hacia arriba y la minúscula a la derecha o hacia abajo; una línea como `aBc` ejecuta varias jugadas seguidas.
+- **Progresión y récords**: guarda el mejor número de movimientos de cada nivel en `records.txt` y desbloquea los niveles de uno en uno.
+
+## Competencias
+
+| Área | Qué se aplicó |
+|------|---------------|
+| Modelado de datos | Tablero como matriz de caracteres y coches como códigos de posición |
+| Lógica de juego | Validación de movimientos, recuento de jugadas válidas y detección de la salida |
+| Ficheros | Carga de niveles y lectura y escritura de récords en texto plano |
 
 ## Estructura del repositorio
 
@@ -37,20 +77,21 @@ PAR-King-CLI/
 └── jugadas.txt       # Fichero de datos auxiliar (no lo usa el código)
 ```
 
-## Requisitos
+## Cómo ejecutarlo
 
-- Python 3.
-- Una terminal con soporte Unicode para ver el tablero correctamente.
-
-## Cómo ejecutar
-
-Desde la carpeta del repositorio, porque el programa abre `niveles.txt` y `records.txt` con rutas relativas:
+Requiere Python 3 y una terminal con soporte Unicode. Ejecútalo desde la carpeta del repositorio, porque el programa abre `niveles.txt` y `records.txt` con rutas relativas:
 
 ```bash
 python3 PAR-King.py
 ```
 
+Al empezar, elige un nivel entre el 1 y el primero sin récord. Después escribe las jugadas y pulsa Intro. Al completar un nivel, el juego muestra los movimientos, avisa si es un nuevo récord y pregunta si quieres pasar al siguiente (`S`/`N`).
+
 El juego modifica `records.txt` al conseguir un nuevo récord. Para jugar con otro conjunto de niveles, sustituye el contenido de `niveles.txt` por el de otro fichero con el mismo formato.
+
+## Estado y limitaciones
+
+- La entrada de jugadas no se valida: una letra que no corresponde a ningún coche del nivel detiene el programa con un `IndexError`.
 
 ## Autoría
 
@@ -60,4 +101,4 @@ Existe una versión con interfaz gráfica en [PAR-King-GUI](https://github.com/J
 
 ---
 
-Forma parte de [UVa-Projects](https://github.com/JavivuG/UVa-Projects).
+<div align="center"><sub>Parte de <a href="https://github.com/JavivuG/UVa-Projects">UVa-Projects</a> · Javier García González</sub></div>
