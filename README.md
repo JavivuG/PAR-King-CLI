@@ -10,37 +10,13 @@
 
 </div>
 
-Nivel 1 tal y como lo dibuja el programa. Cada coche es una letra; el hueco del borde inferior es la salida.
+Nivel 1 tal y como lo dibuja el programa, antes y después del movimiento `e`. Cada coche es una letra; el hueco del borde inferior es la salida.
 
-```text
-Elige un nivel (1-2): NIVEL 1 - RECORD 46 movimientos
-
-▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
-▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
-▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
-▒▒▒▒▒┌───┐          ┌───┐          ▒▒▒▒▒
-▒▒▒▒▒│ B │          │ D │          ▒▒▒▒▒
-▒▒▒▒▒│   │          │   │          ▒▒▒▒▒
-▒▒▒▒▒│   │     ┌───┐│   │          ▒▒▒▒▒
-▒▒▒▒▒│   │     │ A ││   │          ▒▒▒▒▒
-▒▒▒▒▒│   │     │   ││   │          ▒▒▒▒▒
-▒▒▒▒▒│   │     │   ││   │┌────────┐▒▒▒▒▒
-▒▒▒▒▒│ b │     │ a ││ d ││F      f│▒▒▒▒▒
-▒▒▒▒▒└───┘     └───┘└───┘└────────┘▒▒▒▒▒
-▒▒▒▒▒               ┌────────┐     ▒▒▒▒▒
-▒▒▒▒▒               │E      e│     ▒▒▒▒▒
-▒▒▒▒▒               └────────┘     ▒▒▒▒▒
-▒▒▒▒▒┌─────────────┐     ┌───┐┌───┐▒▒▒▒▒
-▒▒▒▒▒│C           c│     │ G ││ H │▒▒▒▒▒
-▒▒▒▒▒└─────────────┘     │   ││   │▒▒▒▒▒
-▒▒▒▒▒                    │   ││   │▒▒▒▒▒
-▒▒▒▒▒                    │ g ││ h │▒▒▒▒▒
-▒▒▒▒▒                    └───┘└───┘▒▒▒▒▒
-▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒     ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
-▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒     ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
-▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒     ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
-Movimientos =
-```
+<p align="center">
+  <img src="docs/screenshots/nivel-1.png" width="364" alt="Tablero del nivel 1 de PAR-King dibujado en la terminal con caracteres de caja, antes y después de mover el coche E una casilla a la derecha">
+  <br>
+  <sub>Salida real del programa.</sub>
+</p>
 
 ## En pocas palabras
 
